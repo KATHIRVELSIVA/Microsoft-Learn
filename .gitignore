@@ -1,0 +1,8 @@
+# Ignore bin and obj folders anywhere inside the project
+**/bin/
+**/obj/
+
+# Optional: Ignore files created by text editors or OS
+.DS_Store
+Thumbs.db
+.vs/
