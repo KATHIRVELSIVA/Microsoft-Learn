@@ -179,51 +179,101 @@ bool processedCustomer;
 //     Console.WriteLine(orderID);
 // }
 
-Random dice = new Random();
+// Random dice = new Random();
 
-int roll1 = dice.Next(1, 7);
-int roll2 = dice.Next(1, 7);
-int roll3 = dice.Next(1, 7);
+// int roll1 = dice.Next(1, 7);
+// int roll2 = dice.Next(1, 7);
+// int roll3 = dice.Next(1, 7);
 
-int total = roll1 + roll2 + roll3;
-Console.WriteLine($"Dice roll: {roll1} + {roll2} + {roll3} = {total}");
+// int total = roll1 + roll2 + roll3;
+// Console.WriteLine($"Dice roll: {roll1} + {roll2} + {roll3} = {total}");
 
-if ((roll1 == roll2) || (roll2 == roll3) || (roll1 == roll3)) 
+// if ((roll1 == roll2) || (roll2 == roll3) || (roll1 == roll3)) 
+// {
+//     if ((roll1 == roll2) && (roll2 == roll3)) 
+//     {
+//         Console.WriteLine("You rolled triples!  +6 bonus to total!");
+//         total += 6; 
+//     } 
+//     else 
+//     {
+//         Console.WriteLine("You rolled doubles!  +2 bonus to total!");
+//         total += 2;
+//     }
+// }
+
+// /*
+//    This code reverses a message, counts the number of times 
+//    a particular character appears, then prints the results
+//    to the console window.
+//  */
+
+// string originalMessage = "The quick brown fox jumps over the lazy dog.";
+
+// char[] message = originalMessage.ToCharArray();
+// Array.Reverse(message);
+
+// int letterCount = 0;
+
+// foreach (char letter in message)
+// {
+//     if (letter == 'o')
+//     {
+//         letterCount++;
+//     }
+// }
+
+// string newMessage = new String(message);
+
+// Console.WriteLine(newMessage);
+// Console.WriteLine($"'o' appears {letterCount} times.");
+
+
+// initialize variables - graded assignments 
+int currentAssignments = 5;
+
+int[] sophiaScores = new int[] { 90, 86, 87, 98, 100 };
+int[] andrewScores = new int[] { 92, 89, 81, 96, 90 };
+int[] emmaScores = new int[] { 90, 85, 87, 98, 68 };
+int[] loganScores = new int[] { 90, 95, 87, 88, 96 };
+
+// Student names
+string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan" };
+
+int[] studentScores = new int[10];
+
+// Write the Report Header to the console
+Console.WriteLine("Student\t\tGrade\n");
+
+foreach (string name in studentNames)
 {
-    if ((roll1 == roll2) && (roll2 == roll3)) 
+    string currentStudent = name;
+
+    if (currentStudent == "Sophia")
+        studentScores = sophiaScores;
+
+    else if (currentStudent == "Andrew")
+        studentScores = andrewScores;
+
+    else if (currentStudent == "Emma")
+        studentScores = emmaScores;
+
+    else if (currentStudent == "Logan")
+        studentScores = loganScores;
+
+    // initialize/reset the sum of scored assignments
+    int sumAssignmentScores = 0;
+
+    // initialize/reset the calculated average of exam + extra credit scores
+    decimal currentStudentGrade = 0;
+
+    foreach (int score in studentScores)
     {
-        Console.WriteLine("You rolled triples!  +6 bonus to total!");
-        total += 6; 
-    } 
-    else 
-    {
-        Console.WriteLine("You rolled doubles!  +2 bonus to total!");
-        total += 2;
+        // add the exam score to the sum
+        sumAssignmentScores += score;
     }
+
+    currentStudentGrade = (decimal)(sumAssignmentScores) / currentAssignments;
+
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t?");
 }
-
-/*
-   This code reverses a message, counts the number of times 
-   a particular character appears, then prints the results
-   to the console window.
- */
-
-string originalMessage = "The quick brown fox jumps over the lazy dog.";
-
-char[] message = originalMessage.ToCharArray();
-Array.Reverse(message);
-
-int letterCount = 0;
-
-foreach (char letter in message)
-{
-    if (letter == 'o')
-    {
-        letterCount++;
-    }
-}
-
-string newMessage = new String(message);
-
-Console.WriteLine(newMessage);
-Console.WriteLine($"'o' appears {letterCount} times.");
