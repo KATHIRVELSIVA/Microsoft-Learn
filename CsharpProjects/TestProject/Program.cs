@@ -148,13 +148,13 @@ fraudulentOrderIDs[2] = "C789";
 
 
 // Create Readable Code with Conventions, Whitespace, and Comments in C#
-char userOption;
+// char userOption;
 
-int gameScore;
+// int gameScore;
 
-float particlesPerMillion;
+// float particlesPerMillion;
 
-bool processedCustomer;
+// bool processedCustomer;
 
 /*
   The following code creates five random OrderIDs
@@ -229,51 +229,86 @@ bool processedCustomer;
 // Console.WriteLine($"'o' appears {letterCount} times.");
 
 
-// initialize variables - graded assignments 
-int currentAssignments = 5;
+// // initialize variables - graded assignments 
+// int currentAssignments = 5;
 
-int[] sophiaScores = new int[] { 90, 86, 87, 98, 100 };
-int[] andrewScores = new int[] { 92, 89, 81, 96, 90 };
-int[] emmaScores = new int[] { 90, 85, 87, 98, 68 };
-int[] loganScores = new int[] { 90, 95, 87, 88, 96 };
+// int[] sophiaScores = new int[] { 90, 86, 87, 98, 100 };
+// int[] andrewScores = new int[] { 92, 89, 81, 96, 90 };
+// int[] emmaScores = new int[] { 90, 85, 87, 98, 68 };
+// int[] loganScores = new int[] { 90, 95, 87, 88, 96 };
 
-// Student names
-string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan" };
+// // Student names
+// string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan" };
 
-int[] studentScores = new int[10];
+// int[] studentScores = new int[10];
 
-// Write the Report Header to the console
-Console.WriteLine("Student\t\tGrade\n");
+// // Write the Report Header to the console
+// Console.WriteLine("Student\t\tGrade\n");
 
-foreach (string name in studentNames)
+// foreach (string name in studentNames)
+// {
+//     string currentStudent = name;
+
+//     if (currentStudent == "Sophia")
+//         studentScores = sophiaScores;
+
+//     else if (currentStudent == "Andrew")
+//         studentScores = andrewScores;
+
+//     else if (currentStudent == "Emma")
+//         studentScores = emmaScores;
+
+//     else if (currentStudent == "Logan")
+//         studentScores = loganScores;
+
+//     // initialize/reset the sum of scored assignments
+//     int sumAssignmentScores = 0;
+
+//     // initialize/reset the calculated average of exam + extra credit scores
+//     decimal currentStudentGrade = 0;
+
+//     foreach (int score in studentScores)
+//     {
+//         // add the exam score to the sum
+//         sumAssignmentScores += score;
+//     }
+
+//     currentStudentGrade = (decimal)(sumAssignmentScores) / currentAssignments;
+
+//     Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t?");
+// }
+
+// Evaluate Boolean Expressions to Make Decisions in C#
+
+Random coin = new Random();
+Console.WriteLine((coin.Next(0, 2) == 0) ? "heads" : "tails");
+
+string permission = "Admin|Manager";
+int level = 53;
+
+if (permission.Contains("Admin"))
 {
-    string currentStudent = name;
-
-    if (currentStudent == "Sophia")
-        studentScores = sophiaScores;
-
-    else if (currentStudent == "Andrew")
-        studentScores = andrewScores;
-
-    else if (currentStudent == "Emma")
-        studentScores = emmaScores;
-
-    else if (currentStudent == "Logan")
-        studentScores = loganScores;
-
-    // initialize/reset the sum of scored assignments
-    int sumAssignmentScores = 0;
-
-    // initialize/reset the calculated average of exam + extra credit scores
-    decimal currentStudentGrade = 0;
-
-    foreach (int score in studentScores)
+    if (level > 55)
     {
-        // add the exam score to the sum
-        sumAssignmentScores += score;
+        Console.WriteLine("Welcome, Super Admin user.");
     }
-
-    currentStudentGrade = (decimal)(sumAssignmentScores) / currentAssignments;
-
-    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t?");
+    else
+    {
+        Console.WriteLine("Welcome, Admin user.");
+    }
+}
+else if (permission.Contains("Manager"))
+{
+    if (level >= 20)
+    {
+        Console.WriteLine("Contact an Admin for access.");
+    }
+    else
+    {
+        Console.WriteLine("You do not have sufficient privileges.");
+    }
+}
+else
+{
+    Console.WriteLine("You do not have sufficient privileges.");
 }
