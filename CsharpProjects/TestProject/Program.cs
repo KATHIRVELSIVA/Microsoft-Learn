@@ -599,40 +599,109 @@ Console.WriteLine($"Last number: {current}");
 
 // Choose the Correct Data Type in Your C# Code
 
-Console.WriteLine("Signed integral types:");
+// Console.WriteLine("Signed integral types:");
 
-Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
-Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
-Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
-Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
+// Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
+// Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
+// Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
+// Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
 
-Console.WriteLine("");
-Console.WriteLine("Unsigned integral types:");
+// Console.WriteLine("");
+// Console.WriteLine("Unsigned integral types:");
 
-Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
-Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
-Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
-Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
+// Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
+// Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
+// Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
+// Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
 
-Console.WriteLine("");
-Console.WriteLine("Floating point types:");
-Console.WriteLine($"float  : {float.MinValue} to {float.MaxValue} (with ~6-9 digits of precision)");
-Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17 digits of precision)");
-Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
+// Console.WriteLine("");
+// Console.WriteLine("Floating point types:");
+// Console.WriteLine($"float  : {float.MinValue} to {float.MaxValue} (with ~6-9 digits of precision)");
+// Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17 digits of precision)");
+// Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
 
-int val_A = 2;
-int val_B = val_A;
-val_B = 5;
+// int val_A = 2;
+// int val_B = val_A;
+// val_B = 5;
 
-Console.WriteLine("--Value Types--");
-Console.WriteLine($"val_A: {val_A}");
-Console.WriteLine($"val_B: {val_B}");
+// Console.WriteLine("--Value Types--");
+// Console.WriteLine($"val_A: {val_A}");
+// Console.WriteLine($"val_B: {val_B}");
 
-int[] ref_A= new int[1];
-ref_A[0] = 2;
-int[] ref_B = ref_A;
-ref_B[0] = 5;
+// int[] ref_A= new int[1];
+// ref_A[0] = 2;
+// int[] ref_B = ref_A;
+// ref_B[0] = 5;
 
-Console.WriteLine("--Reference Types--");
-Console.WriteLine($"ref_A[0]: {ref_A[0]}");
-Console.WriteLine($"ref_B[0]: {ref_B[0]}");
+// Console.WriteLine("--Reference Types--");
+// Console.WriteLine($"ref_A[0]: {ref_A[0]}");
+// Console.WriteLine($"ref_B[0]: {ref_B[0]}");
+
+decimal myDecimal = 3.14m;
+Console.WriteLine($"decimal: {myDecimal}");
+
+int myInt = (int)myDecimal;
+Console.WriteLine($"int: {myInt}");
+
+string first = "5";
+string second = "7";
+int sum = int.Parse(first) + int.Parse(second);
+Console.WriteLine(sum);
+
+string value1 = "5";
+string value2 = "7";
+int result = Convert.ToInt32(value1) * Convert.ToInt32(value2);
+Console.WriteLine(result);
+
+int value = (int)1.5m; // casting truncates
+Console.WriteLine(value);
+
+int value3 = Convert.ToInt32(1.5m); // converting rounds up
+Console.WriteLine(value3);
+
+string value4 = "102";
+int result1 = 0;
+if (int.TryParse(value4, out result1))
+{
+   Console.WriteLine($"Measurement: {result1}");
+}
+else
+{
+   Console.WriteLine("Unable to report the measurement.");
+}
+Console.WriteLine($"Measurement (w/ offset): {50 + result1}");
+
+string[] values = { "12.3", "45", "ABC", "11", "DEF" };
+
+decimal total = 0m;
+string message = "";
+
+foreach (var valued in values)
+{
+    decimal number; // stores the TryParse "out" value
+    if (decimal.TryParse(valued, out number))
+    {
+        total += number;
+    } else
+    {
+        message += valued;
+    }
+}
+
+Console.WriteLine($"Message: {message}");
+Console.WriteLine($"Total: {total}");
+
+int values1 = 11;
+decimal values2 = 6.2m;
+float values3 = 4.3f;
+
+// The Convert class is best for converting the fractional decimal numbers into whole integer numbers
+// Convert.ToInt32() rounds up the way you would expect.
+int results1 = Convert.ToInt32(values1 / values2);
+Console.WriteLine($"Divide value1 by value2, display the result as an int: {results1}");
+
+decimal results2 = values2 / (decimal)values3;
+Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {results2}");
+
+float results3 = values3 / values1;
+Console.WriteLine($"Divide value3 by value1, display the result as a float: {results3}");
