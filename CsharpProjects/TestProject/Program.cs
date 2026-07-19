@@ -478,121 +478,161 @@ while (current >= 3)
 Console.WriteLine($"Last number: {current}");
 */
 
-int hero = 10;
-int monster = 10;
+// int hero = 10;
+// int monster = 10;
 
-Random dice = new Random();
+// Random dice = new Random();
 
-do
-{
-    int roll = dice.Next(1, 11);
-    monster -= roll;
-    Console.WriteLine($"Monster was damaged and lost {roll} health and now has {monster} health.");
+// do
+// {
+//     int roll = dice.Next(1, 11);
+//     monster -= roll;
+//     Console.WriteLine($"Monster was damaged and lost {roll} health and now has {monster} health.");
 
-    if (monster <= 0) continue;
+//     if (monster <= 0) continue;
 
-    roll = dice.Next(1, 11);
-    hero -= roll;
-    Console.WriteLine($"Hero was damaged and lost {roll} health and now has {hero} health.");
+//     roll = dice.Next(1, 11);
+//     hero -= roll;
+//     Console.WriteLine($"Hero was damaged and lost {roll} health and now has {hero} health.");
 
-} while (hero > 0 && monster > 0);
+// } while (hero > 0 && monster > 0);
 
-Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
-
-string? readResult;
-string valueEntered = "";
-int numValue = 0;
-bool validNumber = false;
-
-Console.WriteLine("Enter an integer value between 5 and 10");
-
-do
-{
-    readResult = Console.ReadLine();
-    if (readResult != null) 
-    {
-        valueEntered = readResult;
-    }
-
-    validNumber = int.TryParse(valueEntered, out numValue);
-
-    if (validNumber == true)
-    {
-        if (numValue <= 5 || numValue >= 10)
-        {
-            validNumber = false;
-            Console.WriteLine($"You entered {numValue}. Please enter a number between 5 and 10.");
-        }
-    }
-    else 
-    {
-        Console.WriteLine("Sorry, you entered an invalid number, please try again");
-    }
-} while (validNumber == false);
-
-Console.WriteLine($"Your input value ({numValue}) has been accepted.");
-
-readResult = Console.ReadLine();
+// Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
 
 // string? readResult;
-string roleName = "";
-bool validEntry = false;
+// string valueEntered = "";
+// int numValue = 0;
+// bool validNumber = false;
 
-do
-{                
-    Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
-    readResult = Console.ReadLine();
-    if (readResult != null) 
-    {
-        roleName = readResult.Trim();
-    }
+// Console.WriteLine("Enter an integer value between 5 and 10");
 
-    if (roleName.ToLower() == "administrator" || roleName.ToLower() == "manager" || roleName.ToLower() == "user") 
-    {
-        validEntry = true;
-    }
-    else
-    {
-        Console.Write($"The role name that you entered, \"{roleName}\" is not valid. ");
-    }
+// do
+// {
+//     readResult = Console.ReadLine();
+//     if (readResult != null) 
+//     {
+//         valueEntered = readResult;
+//     }
 
-} while (validEntry == false);
+//     validNumber = int.TryParse(valueEntered, out numValue);
 
-Console.WriteLine($"Your input value ({roleName}) has been accepted.");
-readResult = Console.ReadLine();
+//     if (validNumber == true)
+//     {
+//         if (numValue <= 5 || numValue >= 10)
+//         {
+//             validNumber = false;
+//             Console.WriteLine($"You entered {numValue}. Please enter a number between 5 and 10.");
+//         }
+//     }
+//     else 
+//     {
+//         Console.WriteLine("Sorry, you entered an invalid number, please try again");
+//     }
+// } while (validNumber == false);
 
-string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
-int stringsCount = myStrings.Length;
+// Console.WriteLine($"Your input value ({numValue}) has been accepted.");
 
-string myString = "";
-int periodLocation = 0;
+// readResult = Console.ReadLine();
 
-for (int i = 0; i < stringsCount; i++)
-{
-    myString = myStrings[i];
-    periodLocation = myString.IndexOf(".");
+// // string? readResult;
+// string roleName = "";
+// bool validEntry = false;
 
-    string mySentence;
+// do
+// {                
+//     Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+//     readResult = Console.ReadLine();
+//     if (readResult != null) 
+//     {
+//         roleName = readResult.Trim();
+//     }
 
-    // extract sentences from each string and display them one at a time
-    while (periodLocation != -1)
-    {
+//     if (roleName.ToLower() == "administrator" || roleName.ToLower() == "manager" || roleName.ToLower() == "user") 
+//     {
+//         validEntry = true;
+//     }
+//     else
+//     {
+//         Console.Write($"The role name that you entered, \"{roleName}\" is not valid. ");
+//     }
 
-        // first sentence is the string value to the left of the period location
-        mySentence = myString.Remove(periodLocation);
+// } while (validEntry == false);
 
-        // the remainder of myString is the string value to the right of the location
-        myString = myString.Substring(periodLocation + 1);
+// Console.WriteLine($"Your input value ({roleName}) has been accepted.");
+// readResult = Console.ReadLine();
 
-        // remove any leading white-space from myString
-        myString = myString.TrimStart();
+// string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+// int stringsCount = myStrings.Length;
 
-        // update the comma location and increment the counter
-        periodLocation = myString.IndexOf(".");
+// string myString = "";
+// int periodLocation = 0;
 
-        Console.WriteLine(mySentence);
-    }
+// for (int i = 0; i < stringsCount; i++)
+// {
+//     myString = myStrings[i];
+//     periodLocation = myString.IndexOf(".");
+
+//     string mySentence;
+
+//     // extract sentences from each string and display them one at a time
+//     while (periodLocation != -1)
+//     {
+
+//         // first sentence is the string value to the left of the period location
+//         mySentence = myString.Remove(periodLocation);
+
+//         // the remainder of myString is the string value to the right of the location
+//         myString = myString.Substring(periodLocation + 1);
+
+//         // remove any leading white-space from myString
+//         myString = myString.TrimStart();
+
+//         // update the comma location and increment the counter
+//         periodLocation = myString.IndexOf(".");
+
+//         Console.WriteLine(mySentence);
+//     }
  
-    mySentence = myString.Trim();
-    Console.WriteLine(mySentence);
-}
+//     mySentence = myString.Trim();
+//     Console.WriteLine(mySentence);
+// }
+
+// Choose the Correct Data Type in Your C# Code
+
+Console.WriteLine("Signed integral types:");
+
+Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
+Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
+Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
+Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
+
+Console.WriteLine("");
+Console.WriteLine("Unsigned integral types:");
+
+Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
+Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
+Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
+Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
+
+Console.WriteLine("");
+Console.WriteLine("Floating point types:");
+Console.WriteLine($"float  : {float.MinValue} to {float.MaxValue} (with ~6-9 digits of precision)");
+Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17 digits of precision)");
+Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
+
+int val_A = 2;
+int val_B = val_A;
+val_B = 5;
+
+Console.WriteLine("--Value Types--");
+Console.WriteLine($"val_A: {val_A}");
+Console.WriteLine($"val_B: {val_B}");
+
+int[] ref_A= new int[1];
+ref_A[0] = 2;
+int[] ref_B = ref_A;
+ref_B[0] = 5;
+
+Console.WriteLine("--Reference Types--");
+Console.WriteLine($"ref_A[0]: {ref_A[0]}");
+Console.WriteLine($"ref_B[0]: {ref_B[0]}");
