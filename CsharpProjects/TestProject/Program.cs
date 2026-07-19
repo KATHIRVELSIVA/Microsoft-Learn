@@ -637,71 +637,166 @@ Console.WriteLine($"Last number: {current}");
 // Console.WriteLine($"ref_A[0]: {ref_A[0]}");
 // Console.WriteLine($"ref_B[0]: {ref_B[0]}");
 
-decimal myDecimal = 3.14m;
-Console.WriteLine($"decimal: {myDecimal}");
+// decimal myDecimal = 3.14m;
+// Console.WriteLine($"decimal: {myDecimal}");
 
-int myInt = (int)myDecimal;
-Console.WriteLine($"int: {myInt}");
+// int myInt = (int)myDecimal;
+// Console.WriteLine($"int: {myInt}");
 
-string first = "5";
-string second = "7";
-int sum = int.Parse(first) + int.Parse(second);
-Console.WriteLine(sum);
+// string first = "5";
+// string second = "7";
+// int sum = int.Parse(first) + int.Parse(second);
+// Console.WriteLine(sum);
 
-string value1 = "5";
-string value2 = "7";
-int result = Convert.ToInt32(value1) * Convert.ToInt32(value2);
+// string value1 = "5";
+// string value2 = "7";
+// int result = Convert.ToInt32(value1) * Convert.ToInt32(value2);
+// Console.WriteLine(result);
+
+// int value = (int)1.5m; // casting truncates
+// Console.WriteLine(value);
+
+// int value3 = Convert.ToInt32(1.5m); // converting rounds up
+// Console.WriteLine(value3);
+
+// string value4 = "102";
+// int result1 = 0;
+// if (int.TryParse(value4, out result1))
+// {
+//    Console.WriteLine($"Measurement: {result1}");
+// }
+// else
+// {
+//    Console.WriteLine("Unable to report the measurement.");
+// }
+// Console.WriteLine($"Measurement (w/ offset): {50 + result1}");
+
+// string[] values = { "12.3", "45", "ABC", "11", "DEF" };
+
+// decimal total = 0m;
+// string message = "";
+
+// foreach (var valued in values)
+// {
+//     decimal number; // stores the TryParse "out" value
+//     if (decimal.TryParse(valued, out number))
+//     {
+//         total += number;
+//     } else
+//     {
+//         message += valued;
+//     }
+// }
+
+// Console.WriteLine($"Message: {message}");
+// Console.WriteLine($"Total: {total}");
+
+// int values1 = 11;
+// decimal values2 = 6.2m;
+// float values3 = 4.3f;
+
+// // The Convert class is best for converting the fractional decimal numbers into whole integer numbers
+// // Convert.ToInt32() rounds up the way you would expect.
+// int results1 = Convert.ToInt32(values1 / values2);
+// Console.WriteLine($"Divide value1 by value2, display the result as an int: {results1}");
+
+// decimal results2 = values2 / (decimal)values3;
+// Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {results2}");
+
+// float results3 = values3 / values1;
+// Console.WriteLine($"Divide value3 by value1, display the result as a float: {results3}");
+
+string[] pallets = [ "B14", "A11", "B12", "A13" ];
+
+Console.WriteLine("Sorted...");
+Array.Sort(pallets);
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Console.WriteLine("Reversed...");
+Array.Reverse(pallets);
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+Console.WriteLine("");
+
+Array.Clear(pallets, 0, 2);
+Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Array.Resize(ref pallets, 6);
+Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
+
+pallets[4] = "C01";
+pallets[5] = "C02";
+
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Array.Resize(ref pallets, 3);
+Console.WriteLine($"Resizing 3 ... count: {pallets.Length}");
+
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+string value = "abc123";
+char[] valueArray = value.ToCharArray();
+Array.Reverse(valueArray);
+// string result = new string(valueArray);
+string result = String.Join(",", valueArray);
 Console.WriteLine(result);
 
-int value = (int)1.5m; // casting truncates
-Console.WriteLine(value);
-
-int value3 = Convert.ToInt32(1.5m); // converting rounds up
-Console.WriteLine(value3);
-
-string value4 = "102";
-int result1 = 0;
-if (int.TryParse(value4, out result1))
+string[] items = result.Split(',');
+foreach (string item in items)
 {
-   Console.WriteLine($"Measurement: {result1}");
+    Console.WriteLine(item);
 }
-else
+
+string pangram = "The quick brown fox jumps over the lazy dog";
+
+// Step 1
+string[] message = pangram.Split(' ');
+
+//Step 2
+string[] newMessage = new string[message.Length];
+
+// Step 3
+for (int i = 0; i < message.Length; i++)
 {
-   Console.WriteLine("Unable to report the measurement.");
+    char[] letters = message[i].ToCharArray();
+    Array.Reverse(letters);
+    newMessage[i] = new string(letters);
 }
-Console.WriteLine($"Measurement (w/ offset): {50 + result1}");
 
-string[] values = { "12.3", "45", "ABC", "11", "DEF" };
+//Step 4
+string result1 = String.Join(" ", newMessage);
+Console.WriteLine(result1);
 
-decimal total = 0m;
-string message = "";
+string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+string[] items1 = orderStream.Split(',');
+Array.Sort(items);
 
-foreach (var valued in values)
+foreach (var item in items1)
 {
-    decimal number; // stores the TryParse "out" value
-    if (decimal.TryParse(valued, out number))
+    if (item.Length == 4)
     {
-        total += number;
-    } else
+        Console.WriteLine(item);
+    }
+    else
     {
-        message += valued;
+        Console.WriteLine(item + "\t- Error");
     }
 }
-
-Console.WriteLine($"Message: {message}");
-Console.WriteLine($"Total: {total}");
-
-int values1 = 11;
-decimal values2 = 6.2m;
-float values3 = 4.3f;
-
-// The Convert class is best for converting the fractional decimal numbers into whole integer numbers
-// Convert.ToInt32() rounds up the way you would expect.
-int results1 = Convert.ToInt32(values1 / values2);
-Console.WriteLine($"Divide value1 by value2, display the result as an int: {results1}");
-
-decimal results2 = values2 / (decimal)values3;
-Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {results2}");
-
-float results3 = values3 / values1;
-Console.WriteLine($"Divide value3 by value1, display the result as a float: {results3}");
